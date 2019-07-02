@@ -19,7 +19,9 @@ export default class FeedScreen extends Component {
                     </Text>
                     <Text>Name of someone</Text>
                     <TextInput/>
-                    <Button />
+                    <Button 
+                        title="Post"    
+                    />
                     </View>
             </View>
         )
@@ -32,4 +34,4 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
 
     },
-})
+});
