@@ -21,18 +21,54 @@ export default class HomeScreen extends Component {
                     />
                 </View>
                 <View>
-                    <Text>Please select Bangkok</Text>
+                    <Text>Please select Bangkok districts</Text>
                     <Button
-                        title="province1"
+                        title="Phra Nakhon"
                     />
                     <Button
-                        title="province2"
+                        title="Dusit"
                     />
                     <Button
-                        title="province3"
+                        title="Nong Chok"
                     />
                     <Button
-                        title="province4"
+                        title="Bang Rak"
+                    />
+                    <Button
+                        title="Bang Khen"
+                    />
+                    <Button
+                        title="Bang Kapi"
+                    />
+                    <Button
+                        title="Pathum Wan"
+                    />
+                    <Button
+                        title="Pom Prap Sattru Phai"
+                    />
+                    <Button
+                        title="Phra Khanong"
+                    />
+                    <Button
+                        title="Min Buri"
+                    />
+                    <Button
+                        title="Lat Krabang"
+                    />
+                    <Button
+                        title="Yan Nawa"
+                    />
+                    <Button
+                        title="Samphanthawong"
+                    />
+                    <Button
+                        title="Phaya Thai"
+                    />
+                    <Button
+                        title="Thon Buri"
+                    />
+                    <Button
+                        title="Bangkok Yai"
                     />
                 </View>
 

@@ -69,11 +69,12 @@ const styles = StyleSheet.create({
         width: 185,
     },
     title: {
-        fontSize: 26
+        fontSize: 36,
+        fontWeight: 'bold',
     },
     title2: {
-        fontSize: 20
+        fontSize: 33,
+        lineHeight: 15,
+        textAlign: 'justify'
     }
-    
-
-});
+    });

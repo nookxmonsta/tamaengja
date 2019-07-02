@@ -7,11 +7,11 @@ export default class FeedScreen extends Component {
     constructor(props) {
         super(props)
 
-        this.state = { 
+        this.state = {
             post: "",
             myPosto: []
         }
-        
+
     }
 
 
@@ -19,12 +19,12 @@ export default class FeedScreen extends Component {
 
         let posts = []
 
-        firestore.collection("feeds").doc('bangkok').collection('event0').get().then( snapshot => {
+        firestore.collection("feeds").doc('bangkok').collection('BangKhen').get().then(snapshot => {
             snapshot.forEach(doc => {
-            
+
                 console.log(doc.data().title.post);
                 let post = doc.data().title.post
-                posts = [ post , ...posts ]            
+                posts = [post, ...posts]
             })
 
             this.setState({
@@ -44,44 +44,51 @@ export default class FeedScreen extends Component {
     }
 
     onPost = () => {
-        let {post , myPosto} = this.state;
-        
-        firestore.collection("feeds").doc('bangkok').collection('event0').add({
+        let { post, myPosto } = this.state;
+
+        firestore.collection("feeds").doc('bangkok').collection('BangKhen').add({
             title: { post },
         })
 
         this.setState({
-            myPosto: [post , ...myPosto]
+            myPosto: [post, ...myPosto],
+            post: ""
         })
 
     }
 
     render() {
         let myPosto = this.state.myPosto
-        
+
         return (
-        <ScrollView>
-            <View style={styles.container}> 
-                <Text>Festival</Text>
-                <Text>in Bangkok</Text>
-                <View>
-                    {
-                        myPosto.map((post , index) => {
-                            return(<Text key={index}>{post}</Text>)
-                        })
-                    }
+            <View style={{flex: 1}}>
+                <ScrollView>
+                    <Text style={styles.textCenter} >Festival</Text>
+                    <Text >in Bangkok</Text>
+                    <View>
+                        {
+                            myPosto.map((post, index) => {
+                                return (<Text key={index}>{post}</Text>)
+                            })
+                        }
+
+                    </View>
+                </ScrollView>
+                <View style={"height: 20%"}>
+            
                     <TextInput
-                    style={{height: 40, width: 250, borderColor: 'gray', borderWidth: 1}}
-                    onChangeText={(text) => this.setState({post : text})}
-                    value={this.state.post}
+                        style={styles.PostInput}
+                        onChangeText={(text) => this.setState({ post: text })}
+                        value={this.state.post}
                     />
-                    <Button
+
+                    <Button style={{justifyContent: 'flex-end'}}
                         title="Post"
                         onPress={this.onPost}
+                        value={this.post}
                     />
                 </View>
             </View>
-        </ScrollView>
         )
     }
 }
@@ -89,8 +96,23 @@ export default class FeedScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        // alignItems: 'center',
-        // justifyContent: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
+    center: {
+        alignItems: 'center',
+
+    },
+    PostInput: {
+        borderRadius: 10,
+        borderWidth: 1,
+        margin: 12,
+        height: 70, 
+        width: 350, 
+        borderColor: 'gray', 
+        borderWidth: 1, 
+    },
+    textCenter: {
+        alignItems: 'center',
+    }
 });
