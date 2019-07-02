@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
 
 export default class HomeScreen extends Component {
     onPress1 = () => {
@@ -9,6 +9,7 @@ export default class HomeScreen extends Component {
     render() {
         let { name } = this.props.navigation.state.params
         return (
+        <ScrollView>
             <View style={styles.container}>
                 <View>
                     <Text>Welcome </Text>
@@ -22,6 +23,7 @@ export default class HomeScreen extends Component {
                 </View>
                 
             </View>
+        </ScrollView>
         )
     }
 }
