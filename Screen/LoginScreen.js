@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     },
     title2: {
         fontSize: 33,
-        lineHeight: 15,
+        lineHeight: 32,
         textAlign: 'justify'
     }
     });

@@ -61,28 +61,30 @@ export default class FeedScreen extends Component {
         let myPosto = this.state.myPosto
 
         return (
-            <View style={{flex: 1}}>
-                <ScrollView>
-                    <Text style={styles.textCenter} >Festival</Text>
-                    <Text >in Bangkok</Text>
-                    <View>
-                        {
-                            myPosto.map((post, index) => {
-                                return (<Text key={index}>{post}</Text>)
-                            })
-                        }
-
-                    </View>
-                </ScrollView>
-                <View style={"height: 20%"}>
             
+                <View style={styles.show}>
+                    <ScrollView>
+                        <Text style={styles.textCenter} >Festival</Text>
+                        <Text >in Bangkok</Text>
+                        <View>
+                            {
+                                myPosto.map((post, index) => {
+                                    return (<Text key={index}>{post}</Text>)
+                                })
+                            }
+
+                        </View>
+                    </ScrollView>
+                
+                <View style={"height: 20%"}>
+
                     <TextInput
                         style={styles.PostInput}
                         onChangeText={(text) => this.setState({ post: text })}
                         value={this.state.post}
                     />
 
-                    <Button style={{justifyContent: 'flex-end'}}
+                    <Button style={{ justifyContent: 'flex-end' }}
                         title="Post"
                         onPress={this.onPost}
                         value={this.post}
@@ -94,25 +96,21 @@ export default class FeedScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    center: {
-        alignItems: 'center',
-
-    },
+    
     PostInput: {
         borderRadius: 10,
         borderWidth: 1,
         margin: 12,
-        height: 70, 
-        width: 350, 
-        borderColor: 'gray', 
-        borderWidth: 1, 
+        height: 70,
+        width: 350,
+        borderColor: 'gray',
+        borderWidth: 1,
     },
     textCenter: {
-        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    show: {
+        display: 'flex',
+        flex: 1
     }
 });

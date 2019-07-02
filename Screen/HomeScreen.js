@@ -9,19 +9,18 @@ export default class HomeScreen extends Component {
     render() {
         let { name } = this.props.navigation.state.params
         return (
-            <ScrollView>
+            <ScrollView style={{marginTop: 20 }}>
                 <View style={styles.container}>
                     <View>
-                        <Text>Welcome </Text>
+                        <Text >Welcome </Text>
                     </View>
                     <View style={styles.content}>
                         <Text>{name}</Text>
                     </View>
                     <View>
                         <Text>Please select Bangkok districts</Text>
-                        <Button 
+                        <Button style={styles.proBut}
                             title="Bang Bon"
-                            backgroundColor="#008b8b"
                         />
                         <Button 
                             title="Bang Kapi"
@@ -189,5 +188,12 @@ const styles = StyleSheet.create({
     },
     content: {
         flex: 3
+    },
+    proBut: {
+        borderRadius: 10,
+        borderWidth: 1,
+        margin: 20,
+        height: 25,
+        width: 200,
     }
 });
