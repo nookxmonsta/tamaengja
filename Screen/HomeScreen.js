@@ -242,7 +242,7 @@ const styles = StyleSheet.create({
     proBut: {
         borderRadius: 15,
         borderWidth: 1,
-        margin: 18,
+        marginLeft: 18,
         height: 35,
         width: 150,
         fontStyle: 'normal',
