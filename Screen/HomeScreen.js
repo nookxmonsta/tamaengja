@@ -4,7 +4,8 @@ import { StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-nat
 export default class HomeScreen extends Component {
     onPress1 = () => {
         const { navigate } = this.props.navigation
-        navigate('Feed')
+        let { name } = this.props.navigation.state.params
+        navigate('Feed' , { name })
         
     }
     render() {

@@ -1,7 +1,7 @@
 
 
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, TextInput, Button, TouchableHighlight} from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button  } from 'react-native';
 
 
 export default class LoginScreen extends Component {
@@ -10,11 +10,10 @@ export default class LoginScreen extends Component {
         super(props)
 
         this.state = {
-            name: ""
-        }
-        this.state = {
+            name: "",
             pwd: ""
         }
+        
     }
 
     onPress = () => {
@@ -47,17 +46,14 @@ export default class LoginScreen extends Component {
                     placeholder='  Password'
                     secureTextEntry={true}
                 />
-                
-                <TouchableHighlight onPress={this.LoginCheck}>
-                    <View style={styles.signin}>
-                        <Text style={styles.whiteFont}>Sign In</Text>
-                    </View>
-                </TouchableHighlight>
+
                 <View style={styles.butLog}><Button
                     title="Login"
                     onPress={this.onPress}
                     color='#000000'
                 /></View>
+
+                
             </View>
         )
     }

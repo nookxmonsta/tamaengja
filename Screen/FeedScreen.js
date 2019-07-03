@@ -4,10 +4,11 @@ import firebase, { firestore } from './firebase'
 
 
 const Postin = (props) => {
+    let post = props.post
     return (
         <View style={styles.postBut}>
             <Text key={props.i}>
-                {props.post}
+            {post.user.name}:{post.text}
             </Text>
         </View>
     )
@@ -22,19 +23,32 @@ export default class FeedScreen extends Component {
             post: "",
             myPosto: []
         }
-
+        
     }
 
 
     componentWillMount() {
 
         let posts = []
+        // let posts = [
+        //     {
+        //         user:{
+        //             name:"nook"
+        //         },
+        //         text:"fuck"
+        //     },
+        //     {
+        //         user:{
+        //             name:"mewtwo"
+        //         },
+        //         text:"sudo"
+        //     }
+        // ]
 
         firestore.collection("feeds").doc('bangkok').collection('BangKhen').get()
             .then(snapshot => {
                 snapshot.forEach(doc => {
                     if (doc.data().title) {
-                        console.log(doc.data().title.post);
                         let post = doc.data().title.post
                         posts = [post, ...posts]
                     }
@@ -45,25 +59,27 @@ export default class FeedScreen extends Component {
 
             })
 
-        // .then(snapshot => {
-        //     snapshot
-        //       .docs
-        //       .forEach(doc => {
-        //         console.log(JSON.parse(doc._document.data.toString()))
-        //       });
-        //   });
-
     }
 
     onPost = () => {
         let { post, myPosto } = this.state;
+        let { name } = this.props.navigation.state.params
 
-        firestore.collection("feeds").doc('bangkok').collection('BangKhen').add({
-            title: { post },
-        })
+        let newPost = {
+            title:{
+                post:{
+                    text:post,
+                    user:{
+                        name
+                    }
+                }
+            }
+        }
 
+        firestore.collection("feeds").doc('bangkok').collection('BangKhen').add(newPost)
+        
         this.setState({
-            myPosto: [post, ...myPosto],
+            myPosto: [newPost.title.post, ...myPosto],
             post: ""
         })
 
@@ -72,8 +88,6 @@ export default class FeedScreen extends Component {
     render() {
         let myPosto = this.state.myPosto
         
-        
-
         return (
             <View style={styles.container}>
 
@@ -89,6 +103,14 @@ export default class FeedScreen extends Component {
                         <View>
                             {
                                 myPosto.map((post, index) => {
+                                    if(post){
+                                        console.log("have");
+                                        
+                                    }else{
+                                        console.log("not have");
+                                        
+                                    }
+                                    
                                     return (<Postin post={post} key={index} i={index} />)
                                 })
                             }
