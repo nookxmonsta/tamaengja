@@ -7,9 +7,15 @@ const Postin = (props) => {
     let post = props.post
     return (
         <View style={styles.postBut}>
-            <Text key={props.i}>
-            {post.user.name}:{post.text}
-            </Text>
+            <View>
+                <Text key={props.i} style = {styles.textTitle1}>
+                    {post.user.name} :
+                </Text>
+                <Text style={{marginLeft: 20}} >
+                    {post.text}
+                </Text>
+            </View>
+            
         </View>
     )
 }
@@ -23,7 +29,7 @@ export default class FeedScreen extends Component {
             post: "",
             myPosto: []
         }
-        
+
     }
 
 
@@ -66,10 +72,10 @@ export default class FeedScreen extends Component {
         let { name } = this.props.navigation.state.params
 
         let newPost = {
-            title:{
-                post:{
-                    text:post,
-                    user:{
+            title: {
+                post: {
+                    text: post,
+                    user: {
                         name
                     }
                 }
@@ -77,7 +83,7 @@ export default class FeedScreen extends Component {
         }
 
         firestore.collection("feeds").doc('bangkok').collection('BangKhen').add(newPost)
-        
+
         this.setState({
             myPosto: [newPost.title.post, ...myPosto],
             post: ""
@@ -87,30 +93,30 @@ export default class FeedScreen extends Component {
 
     render() {
         let myPosto = this.state.myPosto
-        
+
         return (
             <View style={styles.container}>
 
                 <View style={{ flex: 80, marginTop: 20 }}>
 
-                    <View style={{marginLeft: 20,marginTop:5}}>
+                    <View style={{ marginLeft: 20, marginTop: 5 }}>
                         <Text style={styles.textTitle} >Festival</Text>
                     </View>
-                    <View style={{marginLeft: 20}}>
+                    <View style={{ marginLeft: 20 }}>
                         <Text style={styles.subTitle}>in Bang Khen</Text>
                     </View>
                     <ScrollView>
                         <View>
                             {
                                 myPosto.map((post, index) => {
-                                    if(post){
+                                    if (post) {
                                         console.log("have");
-                                        
-                                    }else{
+
+                                    } else {
                                         console.log("not have");
-                                        
+
                                     }
-                                    
+
                                     return (<Postin post={post} key={index} i={index} />)
                                 })
                             }
@@ -124,13 +130,13 @@ export default class FeedScreen extends Component {
                             onChangeText={(text) => this.setState({ post: text })}
                             value={this.state.post}
                         />
-                        <View style={{alignSelf: 'flex-end'}}>
+                        <View style={{ alignSelf: 'flex-end' }}>
                             <View style={styles.butrealPost}>
                                 <Button style={{ justifyContent: 'flex-end' }}
                                     title="Post"
                                     onPress={this.onPost}
                                     value={this.post}
-                                    color= "#000000"
+                                    color="#000000"
                                 />
                             </View>
                         </View>
@@ -165,14 +171,21 @@ const styles = StyleSheet.create({
     textTitle: {
         fontSize: 36,
         fontWeight: 'bold',
-        
+
+
+    },
+    textTitle1: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginLeft: 10 
+
 
     },
     subTitle: {
         fontSize: 25,
         lineHeight: 32,
         textAlign: 'justify',
-        
+
 
     },
     show: {
