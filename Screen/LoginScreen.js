@@ -24,13 +24,14 @@ export default class LoginScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-              
+
                 <Text style={styles.title}> LIVE </Text>
                 <Text style={styles.title2}> Style </Text>
-           
-              
 
-                <Text> {"\n\n"} Username </Text>
+
+                <View>
+                    <Text> {"\n\n"} Username </Text>
+                </View>
                 <TextInput
                     style={styles.textInput}
                     value={this.state.name}
@@ -45,10 +46,17 @@ export default class LoginScreen extends Component {
                     placeholder='  Password'
                     secureTextEntry={true}
                 />
-                <Button
+                
+                <TouchableHighlight onPress={this.LoginCheck}>
+                    <View style={styles.signin}>
+                        <Text style={styles.whiteFont}>Sign In</Text>
+                    </View>
+                </TouchableHighlight>
+                {/* <View style={styles.butLog}><Button
                     title="Login"
                     onPress={this.onPress}
-                />
+                    color='#000000'
+                /></View> */}
             </View>
         )
     }
@@ -76,5 +84,15 @@ const styles = StyleSheet.create({
         fontSize: 33,
         lineHeight: 32,
         textAlign: 'justify'
+    },
+    butLog: {
+        borderRadius: 10,
+        borderWidth: 1,
+        margin: 20,
+        height: 35,
+        width: 80,
+        backgroundColor: '#add8e6',
+        borderColor: '#ffffff',
+
     }
-    });
+});

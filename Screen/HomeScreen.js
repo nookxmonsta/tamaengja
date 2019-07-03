@@ -5,171 +5,220 @@ export default class HomeScreen extends Component {
     onPress1 = () => {
         const { navigate } = this.props.navigation
         navigate('Feed')
+        
     }
     render() {
         let { name } = this.props.navigation.state.params
         return (
-            <ScrollView style={{marginTop: 20 }}>
+            <ScrollView style={{ marginTop: 20 }}>
                 <View style={styles.container}>
-                    <View>
-                        <Text >Welcome </Text>
+                    <View style={styles.sizeText}>
+                        <Text>{"\n"}Welcome {name}</Text>
                     </View>
-                    <View style={styles.content}>
-                        <Text>{name}</Text>
-                    </View>
+                    
                     <View>
                         <Text>Please select Bangkok districts</Text>
-                        <Button style={styles.proBut}
+                        <View style={styles.proBut}><Button
                             title="Bang Bon"
-                        />
-                        <Button 
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Bang Kapi"
-                        />
-                        <Button 
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Bang Khae"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Bang Khen"
+                            color='#000000'
                             onPress={this.onPress1}
-                        />
-                        <Button
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Bang Kho Laem"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Bang Na"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Bang Phlat"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Bang Rak"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Bang Sue"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Bang khun Thian"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Bangkok Noi"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Bangkok Yai"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Bueng Kum"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Chatuchak"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Chom Thong"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Din Daeng"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Don Mueang"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Dusit"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Hhlong Toei"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Huai Khwang"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Khan Na Yao"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Khlong Sam Wa"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Khlong San"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Lak Si"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Lat Krabang"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Lat Phrao"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Min Buri"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Nong Chok"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Nong Kheam"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Pathum Wan"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Phasi Charoen"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Phaya Thai"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Phra Khanong"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Phra Nakhon"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Pom Prap Sattru Phai"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Prawet"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Rat Burana"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Ratchathewi"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Sai Mai"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Samphanthawong"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Saphan Sung"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Sathon"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Suan Luang"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Taling Chan"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Thawi Watthana"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Thon Buri"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Thung khru"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Wang Thonglang"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Watthana"
-                        />
-                        <Button
+                            color='#000000'
+                        /></View>
+                        <View style={styles.proBut}><Button
                             title="Yan Nawa"
-                        />
+                            color='#000000'
+                        /></View>
                     </View>
 
                 </View>
@@ -190,10 +239,17 @@ const styles = StyleSheet.create({
         flex: 3
     },
     proBut: {
-        borderRadius: 10,
+        borderRadius: 15,
         borderWidth: 1,
-        margin: 20,
-        height: 25,
-        width: 200,
+        margin: 18,
+        height: 35,
+        width: 150,
+        fontStyle: 'normal',
+        textAlign: "center",
+        marginBottom: 10
+
+    },
+    sizeText: {
+        fontSize: 25
     }
 });

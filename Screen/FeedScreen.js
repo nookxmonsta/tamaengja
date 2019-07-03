@@ -2,6 +2,17 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
 import firebase, { firestore } from './firebase'
 
+
+const Postin = (props) => {
+    return (
+        <View style={styles.postBut}>
+            <Text key={props.i}>
+                {props.post}
+            </Text>
+        </View>
+    )
+}
+
 export default class FeedScreen extends Component {
 
     constructor(props) {
@@ -19,19 +30,20 @@ export default class FeedScreen extends Component {
 
         let posts = []
 
-        firestore.collection("feeds").doc('bangkok').collection('BangKhen').get().then(snapshot => {
-            snapshot.forEach(doc => {
+        firestore.collection("feeds").doc('bangkok').collection('BangKhen').get()
+            .then(snapshot => {
+                snapshot.forEach(doc => {
+                    if (doc.data().title) {
+                        console.log(doc.data().title.post);
+                        let post = doc.data().title.post
+                        posts = [post, ...posts]
+                    }
+                })
+                this.setState({
+                    myPosto: posts
+                })
 
-                console.log(doc.data().title.post);
-                let post = doc.data().title.post
-                posts = [post, ...posts]
             })
-
-            this.setState({
-                myPosto: posts
-            })
-
-        })
 
         // .then(snapshot => {
         //     snapshot
@@ -59,58 +71,115 @@ export default class FeedScreen extends Component {
 
     render() {
         let myPosto = this.state.myPosto
+        
+        
 
         return (
-            
-                <View style={styles.show}>
+            <View style={styles.container}>
+
+                <View style={{ flex: 80, marginTop: 20 }}>
+
+                    <View style={{marginLeft: 20,marginTop:5}}>
+                        <Text style={styles.textTitle} >Festival</Text>
+                    </View>
+                    <View style={{marginLeft: 20}}>
+                        <Text style={styles.subTitle}>in Bang Khen</Text>
+                    </View>
                     <ScrollView>
-                        <Text style={styles.textCenter} >Festival</Text>
-                        <Text >in Bangkok</Text>
                         <View>
                             {
                                 myPosto.map((post, index) => {
-                                    return (<Text key={index}>{post}</Text>)
+                                    return (<Postin post={post} key={index} i={index} />)
                                 })
                             }
-
                         </View>
                     </ScrollView>
-                
-                <View style={"height: 20%"}>
-
-                    <TextInput
-                        style={styles.PostInput}
-                        onChangeText={(text) => this.setState({ post: text })}
-                        value={this.state.post}
-                    />
-
-                    <Button style={{ justifyContent: 'flex-end' }}
-                        title="Post"
-                        onPress={this.onPost}
-                        value={this.post}
-                    />
                 </View>
-            </View>
+                <View style={"height: 80%"}>
+                    <View style={styles.postbg}>
+                        <TextInput
+                            style={styles.PostInput}
+                            onChangeText={(text) => this.setState({ post: text })}
+                            value={this.state.post}
+                        />
+                        <View style={{alignSelf: 'flex-end'}}>
+                            <View style={styles.butrealPost}>
+                                <Button style={{ justifyContent: 'flex-end' }}
+                                    title="Post"
+                                    onPress={this.onPost}
+                                    value={this.post}
+                                    color= "#000000"
+                                />
+                            </View>
+                        </View>
+                    </View>
+                </View>
+            </View >
+
+
         )
     }
 }
 
 const styles = StyleSheet.create({
-    
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+
+        justifyContent: 'center',
+    },
+
     PostInput: {
         borderRadius: 10,
         borderWidth: 1,
         margin: 12,
-        height: 70,
+        marginTop: 20,
+        height: 100,
         width: 350,
         borderColor: 'gray',
         borderWidth: 1,
+        backgroundColor: '#ffffff'
     },
-    textCenter: {
-        justifyContent: 'center',
+    textTitle: {
+        fontSize: 36,
+        fontWeight: 'bold',
+        
+
+    },
+    subTitle: {
+        fontSize: 25,
+        lineHeight: 32,
+        textAlign: 'justify',
+        
+
     },
     show: {
         display: 'flex',
         flex: 1
+    },
+    postBut: {
+        borderRadius: 8,
+        borderWidth: 2,
+        margin: 12,
+        marginBottom: 2,
+        marginTop: 4,
+        height: 80,
+        width: 350,
+    },
+    postbg: {
+        backgroundColor: '#b0c4de',
+    },
+    butrealPost: {
+        borderRadius: 10,
+        borderWidth: 1,
+        margin: 20,
+        height: 40,
+        width: 80,
+        backgroundColor: '#add8e6',
+        borderColor: '#ffffff',
+    },
+    textPost: {
+        marginLeft: 20,
+        fontSize: 20
     }
 });
