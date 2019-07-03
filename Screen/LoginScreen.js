@@ -3,6 +3,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, TextInput, Button, TouchableHighlight} from 'react-native';
 
+
 export default class LoginScreen extends Component {
 
     constructor(props) {
@@ -52,11 +53,11 @@ export default class LoginScreen extends Component {
                         <Text style={styles.whiteFont}>Sign In</Text>
                     </View>
                 </TouchableHighlight>
-                {/* <View style={styles.butLog}><Button
+                <View style={styles.butLog}><Button
                     title="Login"
                     onPress={this.onPress}
                     color='#000000'
-                /></View> */}
+                /></View>
             </View>
         )
     }
